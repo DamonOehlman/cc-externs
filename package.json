@@ -1,0 +1,29 @@
+{
+  "name": "cc-externs",
+  "version": "1.0.0",
+  "description": "A collection of externs for closure-compiler with some attempts at versioning and tests",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "crel": "^2.1.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DamonOehlman/cc-externs.git"
+  },
+  "keywords": [
+    "closure-compiler"
+  ],
+  "author": "Damon Oehlman <damon.oehlman@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DamonOehlman/cc-externs/issues"
+  },
+  "homepage": "https://github.com/DamonOehlman/cc-externs#readme"
+}
