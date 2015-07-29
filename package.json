@@ -3,13 +3,12 @@
   "version": "1.0.0",
   "description": "A collection of externs for closure-compiler with some attempts at versioning and tests",
   "main": "index.js",
-  "directories": {
-    "test": "test"
+  "directories": {},
+  "dependencies": {},
+  "devDependencies": {
+    "browserify": "^11.0.0",
+    "mousetrap": "^1.5.3"
   },
-  "dependencies": {
-    "crel": "^2.1.8"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
