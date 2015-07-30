@@ -1,6 +1,7 @@
 sudo: false
 script: make test
+language: java
 
 notifications:
-	email:
-	- damon.oehlman@gmail.com
+  email:
+  - damon.oehlman@gmail.com
