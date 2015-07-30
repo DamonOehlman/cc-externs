@@ -2,7 +2,7 @@
 
 /**
   @constructor
-  @param {!Element} targetElement
+  @param {!HTMLElement} targetElement
 */
 function Mousetrap(targetElement) {}
 
@@ -10,6 +10,7 @@ function Mousetrap(targetElement) {}
   @param {!MousetrapKeySpec} keys
   @param {!MousetrapKeyHandler} callback
   @param {string=} action
+  @return {!Mousetrap}
 */
 Mousetrap.prototype.bind = function(keys, callback, action) {};
 
@@ -19,6 +20,7 @@ Mousetrap.prototype.bind = function(keys, callback, action) {};
   @param {!MousetrapKeySpec} keys
   @param {!MousetrapKeyHandler} callback
   @param {string=} action
+  @return {!Mousetrap}
 */
 Mousetrap.bind = function(keys, callback, action) {};
 
