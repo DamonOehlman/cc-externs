@@ -2,10 +2,12 @@
 
 # set exit on error and tracing
 # see https://gist.github.com/wolfeidau/6761104#file-pi-build-deb-sh-L3-L4
-set -e
-set -o errtrace
+# set -e
+# set -o errtrace
+shopt -s nullglob
 
 TARGET_EXTERN=$1
+PATH_TESTS=test/$TARGET_EXTERN
 
 function testCompile {
 	echo "testing $1"
@@ -33,5 +35,18 @@ function testCompile {
 		--js $1
 }
 
-testCompile test/$TARGET_EXTERN/pass/valid-target.js
-testCompile test/$TARGET_EXTERN/fail/invalid-target.js
+for testfile in $PATH_TESTS/pass/*.js; do
+	testCompile $testfile
+	if [ $? -neq 0 ]; then
+		echo "Captured FAIL for expected valid js: $testfile"
+		exit 1;
+	fi
+done
+
+for testfile in $PATH_TESTS/fail/*.js; do
+	testCompile $testfile
+	if [ $? -eq 0 ]; then
+		echo "Captured PASS for expected invalid test: $testfile"
+		exit 1;
+	fi
+done
