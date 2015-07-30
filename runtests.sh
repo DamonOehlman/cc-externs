@@ -37,7 +37,7 @@ function testCompile {
 
 for testfile in $PATH_TESTS/pass/*.js; do
 	testCompile $testfile
-	if [ $? -neq 0 ]; then
+	if [ $? -ne 0 ]; then
 		echo "Captured FAIL for expected valid js: $testfile"
 		exit 1;
 	fi
