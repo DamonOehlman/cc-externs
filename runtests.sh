@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # strict mode: http://redsymbol.net/articles/unofficial-bash-strict-mode/
-set -euo pipefail
+set -uo pipefail
 shopt -s nullglob
 IFS=$'\n\t'
 
@@ -41,8 +41,9 @@ function genClosureArgs() {
 	ARGS+=(--charset UTF-8)
 	ARGS+=(--warning_level VERBOSE)
 	ARGS+=(--summary_detail_level 3)
+	ARGS+=(--compilation_level ADVANCED_OPTIMIZATIONS)
 
-	echo ${ARGS[@]}
+	echo "${ARGS[*]}"
 }
 
 TARGET_EXTERN=$1
@@ -54,7 +55,7 @@ echo -e ">>> running tests for $1.js externs"
 
 for testfile in $PATH_TESTS/pass/*.js; do
 	echo -e "\n>>> checking $testfile"
-	java -jar $CLOSURE_JAR $(genClosureArgs)[@] --externs $TARGET_EXTERN.js --js $testfile > /dev/null || true
+	java -jar $CLOSURE_JAR $(genClosureArgs) --externs $TARGET_EXTERN.js --js $testfile > /dev/null
 
 	if [ $? -ne 0 ]; then
 		echo "Captured FAIL for expected valid js: $testfile"
@@ -64,8 +65,7 @@ done
 
 for testfile in $PATH_TESTS/fail/*.js; do
 	echo -e "\n>>> checking $testfile"
-	java -jar $CLOSURE_JAR $(genClosureArgs)[@] --externs $TARGET_EXTERN.js --js $testfile > /dev/null || true
-	echo "errorlevel = $?"
+	java -jar $CLOSURE_JAR $(genClosureArgs) --externs $TARGET_EXTERN.js --js $testfile > /dev/null 2>1
 
 	if [ $? -eq 0 ]; then
 		echo "Captured PASS for expected invalid test: $testfile"
