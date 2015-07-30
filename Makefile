@@ -1,3 +1,12 @@
+# get a list of the defined externs that we want to test
+# ... stripping the file extension so make doesn't assume that it's already done
+externs = $(patsubst %.js,%,$(wildcard *.js))
+
+$(externs):
+	@echo $@
+
+test: $(externs)
+
 deps: tools/compiler.jar node_modules
 
 clean:

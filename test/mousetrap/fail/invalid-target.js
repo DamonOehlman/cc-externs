@@ -1,0 +1,1 @@
+new Mousetrap('#test');
