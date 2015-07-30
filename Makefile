@@ -4,6 +4,7 @@ externs = $(patsubst %.js,%,$(wildcard *.js))
 
 $(externs):
 	@echo $@
+	@./runtests.sh $@
 
 test: $(externs)
 

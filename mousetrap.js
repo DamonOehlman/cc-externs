@@ -2,7 +2,7 @@
 
 /**
   @constructor
-  @param {!HtmlElement} targetElement
+  @param {!Element} targetElement
 */
 function Mousetrap(targetElement) {}
 
