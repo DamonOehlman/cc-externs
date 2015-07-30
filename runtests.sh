@@ -10,7 +10,7 @@ TARGET_EXTERN=$1
 function testCompile {
 	echo "testing $1"
 
-	java -jar tools/compiler.jar \
+	java -jar node_modules/google-closure-compiler/compiler.jar \
 		--jscomp_error accessControls \
 		--jscomp_error checkRegExp \
 		--jscomp_error checkTypes \
