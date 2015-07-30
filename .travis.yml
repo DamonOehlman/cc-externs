@@ -1,2 +1,6 @@
 sudo: false
 script: make test
+
+notifications:
+	email:
+	- damon.oehlman@gmail.com
