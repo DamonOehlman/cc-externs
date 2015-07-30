@@ -8,6 +8,8 @@ set -o errtrace
 TARGET_EXTERN=$1
 
 function testCompile {
+	echo "testing $1"
+
 	java -jar tools/compiler.jar \
 		--jscomp_error accessControls \
 		--jscomp_error checkRegExp \
