@@ -50,11 +50,11 @@ TARGET_EXTERN=$1
 PATH_TESTS=test/$TARGET_EXTERN
 CLOSURE_JAR="node_modules/google-closure-compiler/compiler.jar"
 
-echo -e ">>> running tests for $1.js externs (bash version $BASH_VERSION)"
+echo -e "\n=== $1.js ==="
 
 for testfile in $PATH_TESTS/pass/*.js; do
-	echo -e ">>> checking $testfile"
-	java -jar $CLOSURE_JAR $(genClosureArgs) --externs $TARGET_EXTERN.js --js $testfile > /dev/null
+	echo -e "\n>>> checking $testfile"
+	java -jar $CLOSURE_JAR $(genClosureArgs) --externs *.js --js $testfile > /dev/null
 
 	if [ $? -ne 0 ]; then
 		echo "Captured FAIL for expected valid js: $testfile"
@@ -63,7 +63,7 @@ for testfile in $PATH_TESTS/pass/*.js; do
 done
 
 for testfile in $PATH_TESTS/fail/*.js; do
-	echo -e ">>> checking $testfile"
+	echo -e "\n>>> checking $testfile"
 	java -jar $CLOSURE_JAR $(genClosureArgs) --externs $TARGET_EXTERN.js --js $testfile > /dev/null 2>&1
 
 	if [ $? -eq 0 ]; then
